@@ -15,10 +15,28 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-function [ output_args ] = epicycles( input_args )
+function [ results ] = epicycles( data )
 %EPICYCLES Summary of this function goes here
 %   Detailed explanation goes here
-
-
+    r = chimpRandn('r',1,1);
+    numpts = 8;
+    for i = 1:numpts
+        theta = chimpRand(['theta', num2str(i)]) * 2 * pi;
+        pts(i,1) = r * cos(theta);
+        pts(i,2) = r * sin(theta);
+    end
+    pts;
+    data;
+    xdata = reshape(data, 1, numel(data));
+    xpts = reshape(pts', 1, numel(pts));
+    pts;
+    data;
+    %(pts - data) * (pts - data)';
+    addChimpCost((xpts - xdata) * (xpts - xdata)');
+    figure(1);
+    scatter(pts(:,1),pts(:,2), 'o');
+    axis([-1,1,-1,1]);
+    %keyboard;
+    results = r;
 end
 

@@ -23,17 +23,20 @@ tic
 
 burnin = 100;
 samples = 300;
-spacing = 10;
-results = chimplify(@epicycles,burnin,samples,spacing);
-
+spacing = 1;
+data = [[0,1]', [1,0]', [-1,0]', [0,-1]', ...
+    [1/sqrt(2), 1/sqrt(2)]', [-1/sqrt(2), 1/sqrt(2)]', ...
+    [1/sqrt(2), -1/sqrt(2)]', [-1/sqrt(2), -1/sqrt(2)]']
+[ results likelihoods ] = chimplify(@epicycles,burnin,samples,spacing, {data});
 
 toc
 
-mat = cell2mat(results);
-both = reshape(mat,2,numel(mat)/2);
-weights = both(1,:);
-numflips = both(2,:);
+%mat = cell2mat(results);
+%both = reshape(mat,2,numel(mat)/2);
+%xs = mat; %both(1,:);
+xs = cell2mat(results); %reshape(cell2mat(results),1,samples);
 
 if ~CHIMPLE_TEST_DEMOS_RUNNING
-    hist(weights);
+    %hist(xs);
+    %hist(likelihoods);
 end
