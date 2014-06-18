@@ -5,8 +5,8 @@
 %loads decDecimal
 load('marsEphemerides12Years.mat');
 
-burnin=0;
-samples=1;
+burnin=1;
+samples=100;
 spacing=0;
 
 results=chimplify(@copernican1,burnin,samples,spacing,{decDecimal});
