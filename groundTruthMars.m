@@ -56,6 +56,11 @@ subplot(1,2,2)
 %plot(declination)
 plot(rDif(:,2))
 %axis([0 4380 -40 40])
-save('gTMars.mat','rDif')
+rDifTrue=rDif;
+coordsEarthTrue=coordsEarth;
+coordsMarsTrue=coordsMars;
+save('gTMarsDec.mat','rDifTrue')
+save('gTModel','coordsEarthTrue','coordsMarsTrue')
+
 
 
