@@ -7,11 +7,12 @@ load('gTModel.mat');
 load('gTMarsDec.mat');
 
 burnin=1;
-samples=100;
+samples=500;
 spacing=0;
 
-results=chimplify(@keplerian2,burnin,samples,spacing,{rDifTrue});
+[results,cost]=chimplify(@keplerian2,burnin,samples,spacing,{rDifTrue});
 resultsKeplerian=results;
+costKeplerian=cost;
 subplot(1,2,1)
 plot(results{samples}(:,2),'b')
 hold on

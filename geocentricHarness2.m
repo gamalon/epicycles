@@ -6,7 +6,7 @@ burnin=1;
 samples=500;
 spacing=0;
 
-results=chimplify(@geocentric2,burnin,samples,spacing,{rDifTrue});
+[results,cost]=chimplify(@geocentric2,burnin,samples,spacing,{rDifTrue});
 resultsGeocentric=results;
 subplot(1,2,1)
 plot(results{samples}(:,2),'b')
@@ -18,5 +18,5 @@ plot(coordsEarthTrue(:,1),coordsEarthTrue(:,2),'m')
 hold on
 plot(results{samples}(:,1),results{samples}(:,2),'b',coordsMarsTrue(:,1),coordsMarsTrue(:,2),'m')
 hold off
-
+%plot(cost)
 save('resultsGeocentric1.mat','resultsGeocentric')

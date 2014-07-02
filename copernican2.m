@@ -4,7 +4,7 @@
 %in which mars and earth orbit the sun. The sun is fixed and all
 %orbits are perfectly circular.
 
-function result = copernican2(rDifTrue)
+function [result,cost] = copernican2(rDifTrue)
 
 rEarth=chimpRandn('aEarth',1.0000,0.05);       %semimajor axis in AU
 rMars=chimpRandn('aMars',1.5237,0.05);        
@@ -41,6 +41,6 @@ for i=1:size(rDif)
 end
 
 result=[rDif,coordsEarth,coordsMars];
-
+cost=sum(abs(rDif(:,2)-rDifTrue(:,2)));
 
 end

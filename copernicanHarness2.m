@@ -5,11 +5,12 @@ load('gTModel.mat');
 load('gTMarsDec.mat');
 
 burnin=1;
-samples=100;
+samples=500;
 spacing=0;
 
-results=chimplify(@copernican2,burnin,samples,spacing,{rDifTrue});
+[results,cost]=chimplify(@copernican2,burnin,samples,spacing,{rDifTrue});
 resultsCopernican=results;
+costCopernican=cost;
 subplot(1,2,1)
 plot(results{samples}(:,1),'b')
 hold on

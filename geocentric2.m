@@ -3,7 +3,7 @@
 %This is a geocentric generative model of the solar system, 
 %where the sun and mars orbit earth.
 
-function result = geocentric2(rDifTrue)
+function [result,cost] = geocentric2(rDifTrue)
 
 %We begin by considering the terrestrial reference frame. Of course,
 %that's the only frame we're interested in since earth is stationary in
@@ -23,6 +23,7 @@ end
 addChimpCost(sum(abs((coordsMars(:,2)-rDifTrue(:,1)))))
     
 result=coordsMars;
+cost=sum(abs((coordsMars(:,2)-rDifTrue(:,1))));
 
 
 end

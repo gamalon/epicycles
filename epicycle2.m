@@ -1,7 +1,7 @@
 %This is the epicycle model of the solar system. This consists of a single
 %epicycle with a single deferent. 
 
-function result = epicycle2(rDifTrue)
+function [result,cost] = epicycle2(rDifTrue)
 
 years=12;
 days=365;      
@@ -29,6 +29,7 @@ end
 addChimpCost(sum(abs(rDif(:,1)-rDifTrue(:,2))))
 
 result=[rDif,coordsMars];
+cost=sum(abs(rDif(:,1)-rDifTrue(:,2)));
 
 
 end

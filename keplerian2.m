@@ -1,5 +1,5 @@
 %The final model fits keplerian orbits (heliocentric ellipticals)
-function result = keplerian2(rDifTrue)
+function [result,cost] = keplerian2(rDifTrue)
 
 eEarth=chimpRandn('eEarth',0.0167,0.0005);       %eccentricity
 eMars=chimpRandn('eMars',0.0933,0.0005);
@@ -48,6 +48,7 @@ for i=1:size(rDif)
 end
 
 result=[rDif,coordsEarth,coordsMars];
+cost=sum(abs(rDif(:,2)-rDifTrue(:,2)));
 
 end
 

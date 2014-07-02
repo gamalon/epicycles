@@ -9,8 +9,9 @@ burnin=1;
 samples=500;
 spacing=0;
 
-%results=chimplify(@epicycle2,burnin,samples,spacing,{rDifTrue});
+[results,cost]=chimplify(@epicycle2,burnin,samples,spacing,{rDifTrue});
 resultsEpicycle=results;
+costEpicycle=cost;
 subplot(1,2,1)
 plot(results{samples}(:,3),'b')
 hold on
